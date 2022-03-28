@@ -19,4 +19,9 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
+
+
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
 Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
