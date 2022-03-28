@@ -14,6 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('employees', function (Blueprint $table) {
+            $table->engine="InnoDB";
+            
             $table->string('CDE');
             $table->string('Name');
             $table->string('Position');
@@ -25,7 +27,10 @@ return new class extends Migration
 
             $table->timestamps();
 
+            $table->bigInteger('IdPrivilege')->unsigned();
+
             $table->primary('CDE');
+            $table->foreign('IdPrivilege')->references('IdPrivilege')->on('privileges');
         });
     }
 
