@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\employee;
 
 class SessionsController extends Controller
@@ -11,13 +12,22 @@ class SessionsController extends Controller
         return view('auth.login');
     }
 
-    public function store(){
-        if(auth()->attempt(request(['use_name','password'])) == false){
-            return back()->withErrors([
-                'message' => 'The user name or password is incorrect, please try again'
-            ]);
+    public function login(){
+        /**
+         * if(auth()->attempt(request(['user_name','password'])) == false){
+           * return back()->withErrors([
+          *      'message' => 'The user name or password is incorrect, please try again'
+         *   ]);
+        *}
+        *return redirect()->to('/');
+         */
+        $credentials =  request(['UserName','Password']);
+
+        if(auth()->attempt($credentials)){
+            return 'Loggin';
+        }else{
+            return 'Loggin Fail';
         }
-        return redirect()->to('/');
     }
 
     public function destroy(){
