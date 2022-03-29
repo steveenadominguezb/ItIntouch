@@ -32,9 +32,9 @@ class RegisterController extends Controller
         return redirect()->to('/login');
     }
 
-    public function destroy(){
-        auth()->logout();
+    // public function destroy(){
+    //     auth()->logout();
 
-        return redirect()->to('/');
-    }
+    //     return redirect()->to('/');
+    // }
 }

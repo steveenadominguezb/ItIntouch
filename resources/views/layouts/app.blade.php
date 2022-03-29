@@ -30,7 +30,15 @@
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">IT Intouch</h5>
+          <!-- {{
+            $name = auth()->user()->Name;
+          }} -->
+          <!-- @if (auth()->user()->Name!=null)
+            $name = auth()->user()->Name;
+          @else
+            $name = 'IT Intouch'
+          @endif -->
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{$name}}</h5>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
