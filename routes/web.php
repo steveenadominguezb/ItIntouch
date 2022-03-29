@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,7 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
 Route::post('/login', [SessionsController::class, 'login'])->name('login.store');
+
+Route::get('/logout', [SessionsController::class, 'destroy'])->name('login.destroy');
+
+

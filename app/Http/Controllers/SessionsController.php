@@ -13,6 +13,7 @@ class SessionsController extends Controller
     }
 
     public function login(){
+        
         /**
          * if(auth()->attempt(request(['user_name','password'])) == false){
            * return back()->withErrors([
@@ -23,15 +24,16 @@ class SessionsController extends Controller
          */
         $credentials =  request(['UserName','Password']);
 
-        if(auth()->attempt($credentials)){
-            return 'Loggin';
-        }else{
-            return 'Loggin Fail';
+        if(auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')])){
+            return view('index');
         }
+        return back()->withErrors([
+            'message' => 'The user name or password is incorrect, please try again'
+            ]);
     }
 
     public function destroy(){
         auth()->logout();
-        return redirect()->to('/');
+        return redirect()->to('/login');
     }
 }

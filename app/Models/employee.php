@@ -12,6 +12,11 @@ class employee extends Authenticatable
     use HasFactory, Notifiable;
 
     public function setPassword($password){
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['Password'] = bcrypt($password);
     }
+
+    public function getAuthPassword()
+{
+    return $this->Password;
+}
 }
