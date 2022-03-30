@@ -40,8 +40,9 @@
             <input type="password" name="Password" class="form-control" id="exampleInputPassword1">
         </div>
         @error('message')
-        <div class="overflow-scroll alert alert-danger" role="alert">
-           The user name or password is incorrect, please try again
+        <div class="overflow alert alert-danger" role="alert">
+           The user name or password is incorrect, 
+           please try again.
         </div>
             
         @enderror
