@@ -5,7 +5,7 @@
     @endsection
 @endif
 @section('content')
-@if (auth()->user()->UserName == "Laura")
+@if (auth()->user()->UserName == "laura")
     <div>   
         ¿Cuándo vamos a rayar paredes?
     </div>
