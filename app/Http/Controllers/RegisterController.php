@@ -15,16 +15,16 @@ class RegisterController extends Controller
         $employee = new employee();
         $employee->CDE = request('cde');
         $employee->Name = request('name');
-        $employee->Position = 'IT Generalist';
+        $employee->Position = request('position');
         $employee->UserName = request('UserName');
         #$employee->Password = request('Password');
-        $employee->Email = 'IT Generalist';
-        $employee->ContactInfo = 'IT Generalist';
-        $employee->Status = 'IT Generalist';
+        $employee->Email = request('position');
+        $employee->ContactInfo = request('number');
+        $employee->Status = 'Active';
         $employee->Admin = true;
 
         $employee->setPassword(request('Password'));
-        $employee->IdPrivilege = request('IdPrivilege');
+        $employee->IdPrivilege = request('SelectPrivileges');
 
         $employee->save();
 
