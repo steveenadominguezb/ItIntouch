@@ -5,8 +5,14 @@
     @endsection
 @endif
 @section('content')
-
+@if (auth()->user()->UserName == "Laura")
+    <div>   
+        ¿Cuándo vamos a rayar paredes?
+    </div>
+@else
     <div>
         puto el que lo lea
     </div>
+@endif
+    
 @endsection
