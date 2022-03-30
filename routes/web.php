@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-   #return redirect()->to('login');
+   return redirect()->to('login');
 });
 Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
 
