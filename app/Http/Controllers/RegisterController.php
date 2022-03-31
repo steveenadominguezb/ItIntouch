@@ -17,19 +17,24 @@ class RegisterController extends Controller
         $employee->Name = request('name');
         $employee->Position = request('position');
         $employee->UserName = request('UserName');
-        #$employee->Password = request('Password');
+        if(request('Password')==""){
+            $employee->Password = null;
+        }else{
+            $employee->Password = request('Password');
+        }
+        
         $employee->Email = request('position');
         $employee->ContactInfo = request('number');
         $employee->Status = 'Active';
-        $employee->Admin = true;
+        #$employee->Admin = true;
 
         $employee->setPassword(request('Password'));
         $employee->IdPrivilege = request('SelectPrivileges');
 
         $employee->save();
 
-        auth()->login($employee);
-        return redirect()->to('/login');
+        #auth()->login($employee);
+        return redirect()->to('/register');
     }
 
     public function destroy(){

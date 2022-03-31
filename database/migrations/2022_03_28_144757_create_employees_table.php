@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('Name');
             $table->string('Position');
             $table->string('UserName');
-            $table->string('Password');
+            $table->string('Password')->nullable();
             $table->string('Email');
             $table->string('ContactInfo');
             $table->string('Status');
-            $table->boolean('Admin');
+            #$table->boolean('Admin');
 
             $table->timestamps();
 

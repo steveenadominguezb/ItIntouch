@@ -22,11 +22,14 @@ class SessionsController extends Controller
         *}
         *return redirect()->to('/');
          */
-        $credentials =  request(['UserName','Password']);
+        if(request('Password')!=""){
+            $credentials =  request(['UserName','Password']);
 
-        if(auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')])){
-            return view('index');
+            if(auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')])){
+                return view('index');
+            }
         }
+        
         return back()->withErrors([
             'message' => 'The user name or password is incorrect, please try again'
             ]);
