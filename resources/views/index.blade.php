@@ -7,11 +7,11 @@
 @section('content')
 @if (auth()->user()->UserName == "laura")
     <div>   
-        ¿Cuándo vamos a rayar paredes?
+        ¿Te gusto?
     </div>
 @else
     <div>
-        puto el que lo lea
+        WELCOME
     </div>
 @endif
     
