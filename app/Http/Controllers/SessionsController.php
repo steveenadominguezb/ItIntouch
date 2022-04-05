@@ -14,29 +14,68 @@ class SessionsController extends Controller
 
     public function login(){
         
-        /**
-         * if(auth()->attempt(request(['user_name','password'])) == false){
-           * return back()->withErrors([
-          *      'message' => 'The user name or password is incorrect, please try again'
-         *   ]);
-        *}
-        *return redirect()->to('/');
-         */
         if(request('Password')!=""){
             $credentials =  request(['UserName','Password']);
 
-            if(auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')])){
-                return view('index');
+            if((auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')]))){
+               
+                return view('home');
+               
             }
         }
-        
         return back()->withErrors([
-            'message' => 'The user name or password is incorrect, please try again'
+            'message' => 'The username or password is incorrect, please try again'
             ]);
+        
     }
+
+
+    public function createRegister(){
+        return view('auth.register');
+    }
+
+    public function storeRegister(){
+        $this->validate(request(),[
+            'cde' => 'required',
+            'name' => 'required',
+            'position' => 'required',
+            'UserName' => 'required',
+            'Password' => 'required|confirmed',
+            'email' => 'required|email',
+            'number' => 'required',
+            
+
+        ]);
+        $employee = new employee();
+        $employee->CDE = request('cde');
+        $employee->Name = request('name');
+        $employee->Position = request('position');
+        $employee->UserName = request('UserName');
+
+        if(request('Password')==""){
+            $employee->Password = null;
+        }else{
+            $employee->Password = request('Password');
+        }
+        
+        $employee->Email = request('email');
+        $employee->ContactInfo = request('number');
+        $employee->Status = 'Active';
+        #$employee->Admin = true;
+
+        $employee->setPassword(request('Password'));
+        $employee->IdPrivilege = request('SelectPrivileges');
+
+        $employee->save();
+
+        #auth()->login($employee);
+        return back();
+    }
+
+
 
     public function destroy(){
         auth()->logout();
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
 }

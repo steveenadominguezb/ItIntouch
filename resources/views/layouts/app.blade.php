@@ -33,18 +33,47 @@
           margin-top: 5%;
           width: 25%;
         }
+        .father{
+            height: 100%;
+            margin-top: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-login{
+            /* background-color: #b7e4c7; */
+            padding: 50px;
+            border: solid;
+            border-color: black;
+            border-radius: 20px;
+        }
+        .login{
+          margin-right: 20px;
+        }
         body{
           background-image: url("https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/zr6ottdijvsdyeir1zsb");
         }
     </style>
 </head>
 <body>
+    
   <nav class="navbar navbar-light bg-success">
     <div class="container-fluid">
       <a class="navbar-brand text-light fw-bold" href="#">IT INTOUCH</a>
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div class="d-flex w-auto">
+          @if (auth()->check())
+            
+          @else
+          
+          <a class="login h-100 p-2 text-light border border-light rounded-3 fw-bold text-decoration-none" 
+            href="{{ route('login.index') }}">Login</a>
+          @endif
+        
+          <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+     
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header bg-success">
           <!-- {{
@@ -56,10 +85,10 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout">Logout</a>
+              <a class="nav-link" href="{{ route('login.destroy') }}">Logout</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

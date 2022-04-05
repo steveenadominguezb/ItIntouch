@@ -1,23 +1,19 @@
 @extends('layouts.app')
-
+@if ((auth()->user()->IdPrivilege)?? 1000 == 10001)
+    @section('content-register')
+    <li><a class="dropdown-item" href="{{ route('register.index') }}">Register User</a></li>
+    @endsection
+@endif
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    @if (auth()->user()->UserName == "laura")
+        <div>   
+            ¿Te gusto?
         </div>
-    </div>
-</div>
+    @else
+        <div>
+            WELCOME
+        </div>
+    @endif
+    
 @endsection
