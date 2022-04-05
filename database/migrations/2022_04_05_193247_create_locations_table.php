@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('IdLocation');
             $table->string('Name');
             $table->timestamps();
+
+            $table->primary('IdLocation');
         });
     }
 
