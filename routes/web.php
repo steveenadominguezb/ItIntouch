@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
@@ -34,7 +35,12 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login.index')
 #Comprueba si puede iniciar sesion y redirige a home
 Route::post('/login', [SessionsController::class, 'login'])->middleware('guest')->name('login.store');
 
-Route::get('/logout', [SessionsController::class, 'destroy'])->middleware('auth')->name('login.destroy');
+Route::get('/logout', [SessionsController::class, 'destroy'])->middleware('guest')->name('login.destroy');
+
+#Routa para la visualización del formulario de registro de pc
+Route::get('/home/register-pc', [ComputerController::class, 'create'])->name('pc.index');
+#Routa para la visualización del formulario de registro de pc
+Route::post('/home/register-pc', [ComputerController::class, 'store'])->name('pc.store');
 
 
 

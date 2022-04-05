@@ -18,8 +18,10 @@ class SessionsController extends Controller
             $credentials =  request(['UserName','Password']);
 
             if((auth()->attempt(['UserName' => request('UserName'), 'password' => request('Password')]))){
-               
-                return view('home');
+               $privilege = (auth()->user()->IdPrivilege) ?? 9;
+               $name = (auth()->user()->Name) ?? "none";
+               return view('home', ['privilege' => $privilege,
+                                    'name' => $name]);
                
             }
         }
@@ -76,6 +78,6 @@ class SessionsController extends Controller
 
     public function destroy(){
         auth()->logout();
-        return redirect()->to('/');
+        return redirect()->to('/login');
     }
 }
