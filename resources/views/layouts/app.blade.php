@@ -49,9 +49,8 @@
     .form-login {
       /* background-color: #b7e4c7; */
       padding: 50px;
-      border: solid;
-      border-color: black;
-      border-radius: 20px;
+      border: lightcyan;
+      border-radius: 30px;
     }
 
     .login {
@@ -59,7 +58,7 @@
     }
 
     body {
-      background-image: url("https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/zr6ottdijvsdyeir1zsb");
+      background-image: url("https://mma.prnewswire.com/media/555277/24_7_Intouch_24_7_Intouch_Announces_Investment_in_AI_Technology.mp4?p=medium");
     }
   </style>
 </head>
@@ -99,7 +98,6 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login.destroy') }}">Logout</a>
             </li>
-            @endif
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,6 +111,7 @@
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
+            @endif
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

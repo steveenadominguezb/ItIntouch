@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="father">
-        <form class="form-login child bg-success bg-gradient w-25" method="POST" action="">
+        <form class="form-login child bg-light w-25 shadow-lg" method="POST" action="">
             @csrf
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label fw-bold">User name</label>
@@ -19,7 +19,7 @@
             
         @enderror
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <button type="submit" class="btn btn-dark w-50 me-md-2">Send</button>
+            <button type="submit" class="btn btn-success w-50 me-md-2 fw-bold">Send</button>
         </div>
         </form>
     </div>
